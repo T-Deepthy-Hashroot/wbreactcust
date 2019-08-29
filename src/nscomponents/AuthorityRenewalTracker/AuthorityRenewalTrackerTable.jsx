@@ -9,6 +9,8 @@ import {AUTHORITY_SET_REQUEST_STATUS_API} from "nsglobals/api_end_points";
 import {doAxiosGet} from "nsglobals/axios_helper";
 import FormDialog from "nscomponents/SubmitModal/SubmitModal";
 import Button from "@material-ui/core/Button";
+import chemicalsReply from "../../assets/chemicalsReply.json";
+
 
 import {green, orange, red, purple} from "@material-ui/core/colors"
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
@@ -92,7 +94,7 @@ class AuthorityRenewalTrackerTable extends React.Component
     {
         super(props);
         this.state = {
-            data: [],
+            data: chemicalsReply.result,
             loading: true,
             expanded: {},
             showDialog: false,
@@ -694,7 +696,7 @@ class AuthorityRenewalTrackerTable extends React.Component
 
             <WBTable
                 data={this.state.data}
-                loading={this.state.loading}
+                // loading={this.state.loading}
                 filterable={true}
                 expanded={this.state.expanded}
                 onFilteredChange={() => this.setState({ checked : [] })}
