@@ -1,0 +1,88 @@
+//
+// SERVER ROOT
+//
+import Log from 'nsglobals/Log';
+
+let DEFAULT_API_ROOT;
+const hostname = window && window.location && window.location.hostname;
+
+const localhostAPIPort = '8080';
+const port = window.location.port;
+const protocol = window.location.protocol;
+
+if(port === '3000' ) {
+    DEFAULT_API_ROOT = protocol + '//' + hostname + ':' + localhostAPIPort;
+} else {
+    DEFAULT_API_ROOT =  protocol + '//' + hostname + ':' + port;  // DEV, QA and PROD Server should be on same host and port
+}
+
+
+//
+// SSO
+//
+const SSO_SERVICE_PATH = localhostAPIPort!=='6080'?'/wbservicegateway':'';
+
+
+const SSO_ROOT = DEFAULT_API_ROOT + SSO_SERVICE_PATH;
+
+
+
+const LOGIN_START_PATH = '/loginStart';
+
+export const SSO_LOGIN_PATH = SSO_ROOT + LOGIN_START_PATH;
+Log.info( 'SSO_LOGIN_PATH:' + SSO_LOGIN_PATH, 'api_end_points.jsx' );
+
+//
+// AUTHORITY RENEWAL API
+//
+const AUTHORITY_RENEWAL_SERVICE_PATH =  localhostAPIPort!=='6080'?'/wbservicegateway':'';
+
+const AUTHORITY_RENEWAL_API_ROOT = DEFAULT_API_ROOT + AUTHORITY_RENEWAL_SERVICE_PATH;
+
+// for qesp post request
+const AUTHORITY_RENEWAL_SERVICE_QESP = localhostAPIPort!=='6080'?'/wbauthorityrenewalservice':'';
+const QESP_AUTHORITY_RENEWAL_API_ROOT = DEFAULT_API_ROOT + AUTHORITY_RENEWAL_SERVICE_QESP;
+
+const FIND_RENEWAL_SUMMARIES_PATH = '/find-renewal-summaries';
+const FIND_REQUEST_PATH =  '/find-renewal-request';
+const GET_REQUEST_PATH = '/get-renewal-request';
+const GET_RENEWAL_OFFERS_PATH = '/get-renewal-offers';
+const GET_RENEWAL_LANES_PATH = '/get-renewal-lanes';
+const GET_RENEWAL_SHEET_PATH = '/get-renewal-sheet';
+const GET_RENEWAL_FIELD_DEFINITIONS_PATH = '/get-renewal-field-definitions';
+const GET_RENEWAL_FIELD_OPTIONS_PATH = '/get-renewal-field-options';
+const SET_RENEWAL_REQUEST_STATUS_PATH = '/set-renewal-request-status';
+const SAVE_RENEWAL_REQUEST_PATH = '/save-renewal-request ';
+const GET_QESP_INCREASE_OFFER = '/qesp-increase-offer';
+
+// for qesp post request
+const POST_QESP_INCREASE_REQUEST = '/qesp-increase-request';
+
+//export const AUHTORITY_RENEWAL_TRACKER_AUTHORITIES_API = AUTHORITY_RENEWAL_API_ROOT + FIND_RENEWAL_SUMMARIES_PATH;
+export const AUHTORITY_RENEWAL_TRACKER_AUTHORITIES_API = "Custom REST API URL Here that returns the url";
+export const AUHTORITY_RENEWAL_TRACKER_SECTIONS_API = AUTHORITY_RENEWAL_API_ROOT + FIND_RENEWAL_SUMMARIES_PATH;
+export const FIND_AUTHORITY_RENEWAL_REQUEST_API = AUTHORITY_RENEWAL_API_ROOT + FIND_REQUEST_PATH;
+export const GET_AUTHORITY_RENEWAL_REQUEST_API = AUTHORITY_RENEWAL_API_ROOT + GET_REQUEST_PATH;
+export const AUTHORITY_RENEWAL_OFFERS_API = AUTHORITY_RENEWAL_API_ROOT + GET_RENEWAL_OFFERS_PATH;
+export const AUTHORITY_RENEWAL_LANES_API = AUTHORITY_RENEWAL_API_ROOT + GET_RENEWAL_LANES_PATH;
+export const AUTHORITY_RENEWAL_SHEET = AUTHORITY_RENEWAL_API_ROOT + GET_RENEWAL_SHEET_PATH;
+export const AUTHORITY_RENEWAL_FIELD_DEFINITIONS_API = AUTHORITY_RENEWAL_API_ROOT + GET_RENEWAL_FIELD_DEFINITIONS_PATH;
+export const AUTHORITY_RENEWAL_FIELD_OPTIONS_API = AUTHORITY_RENEWAL_API_ROOT + GET_RENEWAL_FIELD_OPTIONS_PATH;
+export const AUTHORITY_SET_REQUEST_STATUS_API = AUTHORITY_RENEWAL_API_ROOT + SET_RENEWAL_REQUEST_STATUS_PATH;
+export const AUTHORITY_RENEWAL_SAVE_REQUEST_API = AUTHORITY_RENEWAL_API_ROOT +SAVE_RENEWAL_REQUEST_PATH;
+export const AUTHORITY_QESP_INCREASE_OFFER = AUTHORITY_RENEWAL_API_ROOT + GET_QESP_INCREASE_OFFER;
+export const AUTHORITY_QESP_INCREASE_REQUEST = QESP_AUTHORITY_RENEWAL_API_ROOT + POST_QESP_INCREASE_REQUEST;
+
+Log.info( 'AUHTORITY_RENEWAL_TRACKER_AUTHORITIES_API:' + AUHTORITY_RENEWAL_TRACKER_AUTHORITIES_API, 'api_end_points.jsx' );
+Log.info( 'AUHTORITY_RENEWAL_TRACKER_SECTIONS_API:' + AUHTORITY_RENEWAL_TRACKER_SECTIONS_API, 'api_end_points.jsx' );
+Log.info( 'FIND_AUTHORITY_RENEWAL_REQUEST_API:' + FIND_AUTHORITY_RENEWAL_REQUEST_API, 'api_end_points.jsx' );
+Log.info( 'GET_AUTHORITY_RENEWAL_REQUEST_API:' + GET_AUTHORITY_RENEWAL_REQUEST_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_OFFERS_API:' + AUTHORITY_RENEWAL_OFFERS_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_LANES_API:' + AUTHORITY_RENEWAL_LANES_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_SHEET:' + AUTHORITY_RENEWAL_SHEET, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_FIELD_DEFINITIONS_API:' + AUTHORITY_RENEWAL_FIELD_DEFINITIONS_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_FIELD_OPTIONS_API:' + AUTHORITY_RENEWAL_FIELD_OPTIONS_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_SET_REQUEST_STATUS_API:' + AUTHORITY_SET_REQUEST_STATUS_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_RENEWAL_SAVE_REQUEST_API:' + AUTHORITY_RENEWAL_SAVE_REQUEST_API, 'api_end_points.jsx' );
+Log.info( 'AUTHORITY_QESP_INCREASE_REQUEST: ' + AUTHORITY_QESP_INCREASE_REQUEST, 'api_end_points.jsx' );
+
